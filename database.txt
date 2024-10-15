@@ -1,0 +1,16 @@
+CREATE TABLE arena_players (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    role_id INT NOT NULL,
+    status ENUM('waiting', 'matched') DEFAULT 'waiting',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE arena_game (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    player1 INT NOT NULL, -- ID do primeiro jogador
+    player2 INT NOT NULL, -- ID do segundo jogador
+    status ENUM('ongoing', 'finished') DEFAULT 'ongoing', -- Status da batalha
+    start_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Hor¨¢rio de in¨ªcio da batalha
+    INDEX (player1),
+    INDEX (player2)
+);
